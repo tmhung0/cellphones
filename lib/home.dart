@@ -19,169 +19,67 @@ class HomePage extends StatelessWidget {
           ),
           Wrap(
             children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Colors.black38,
-                          blurRadius: 3,
-                          offset: Offset(0, 6))
-                    ]),
-                width: 110,
-                height: 150,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PhonePage()));
-                  },
-                  child: Column(
-                    children: [
-                      Image.asset('assets/images/dienthoai.png'),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Điện thoại'),
-                      )
-                    ],
-                  ),
-                ),
+              Item(
+                image: Image.asset('assets/images/dienthoai.png'),
+                name: 'Điện thoại',
               ),
-              Container(
-                padding: const EdgeInsets.all(5),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Colors.black38,
-                          blurRadius: 3,
-                          offset: Offset(0, 6))
-                    ]),
-                width: 110,
-                height: 150,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PhonePage()));
-                  },
-                  child: Column(
-                    children: [
-                      Image.asset('assets/images/amthanh.png'),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Âm thanh'),
-                      )
-                    ],
-                  ),
-                ),
+              Item(
+                image: Image.asset('assets/images/amthanh.png'),
+                name: 'Âm thanh',
               ),
-              Container(
-                padding: const EdgeInsets.all(5),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Colors.black38,
-                          blurRadius: 3,
-                          offset: Offset(0, 6))
-                    ]),
-                width: 110,
-                height: 150,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PhonePage()));
-                  },
-                  child: Column(
-                    children: [
-                      Image.asset('assets/images/dongho.png'),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Đồng hồ'),
-                      )
-                    ],
-                  ),
-                ),
+              Item(
+                image: Image.asset('assets/images/dongho.png'),
+                name: 'Đồng hồ',
               ),
-              Container(
-                padding: const EdgeInsets.all(5),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Colors.black38,
-                          blurRadius: 3,
-                          offset: Offset(0, 6))
-                    ]),
-                width: 110,
-                height: 150,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PhonePage()));
-                  },
-                  child: Column(
-                    children: [
-                      Image.asset('assets/images/maytinh.png'),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Máy tính'),
-                      )
-                    ],
-                  ),
-                ),
+              Item(
+                image: Image.asset('assets/images/hangcu.png'),
+                name: 'Hàng cũ',
               ),
-              Container(
-                padding: const EdgeInsets.all(5),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Colors.black38,
-                          blurRadius: 3,
-                          offset: Offset(0, 6))
-                    ]),
-                width: 110,
-                height: 150,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PhonePage()));
-                  },
-                  child: Column(
-                    children: [
-                      Image.asset('assets/images/hangcu.png'),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Hàng cũ'),
-                      )
-                    ],
-                  ),
-                ),
+              Item(
+                image: Image.asset('assets/images/maytinh.png'),
+                name: 'Máy tính',
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class Item extends StatelessWidget {
+  String name;
+  Image image;
+  Item({super.key, required this.name, required this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      margin: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5),
+          boxShadow: const [
+            BoxShadow(
+                color: Colors.black38, blurRadius: 3, offset: Offset(0, 6))
+          ]),
+      width: 110,
+      height: 150,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const PhonePage()));
+        },
+        child: Column(
+          children: [
+            image,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(name),
+            )
+          ],
+        ),
       ),
     );
   }
