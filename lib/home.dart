@@ -1,3 +1,4 @@
+import 'package:cellphones/location.dart';
 import 'package:cellphones/phone_page.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,25 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Trang chủ'),
+      ),
+      drawer: Drawer(
+        child: InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LocationApp()));
+          },
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Icon(
+              Icons.location_on,
+              color: Colors.blue,
+              size: 40,
+            ),
+            Text(
+              'Location',
+              style: TextStyle(fontSize: 20),
+            ),
+          ]),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +70,7 @@ class HomePage extends StatelessWidget {
 class Item extends StatelessWidget {
   String name;
   Image image;
-  Item({super.key, required this.name, required this.image});
+  Item({required this.name, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +82,7 @@ class Item extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
           boxShadow: const [
             BoxShadow(
-                color: Colors.black38, blurRadius: 3, offset: Offset(0, 6))
+                color: Colors.black38, blurRadius: 5, offset: Offset(0, 5))
           ]),
       width: 110,
       height: 150,
