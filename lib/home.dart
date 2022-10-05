@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cellphones/location.dart';
 import 'package:cellphones/phone_page.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +17,10 @@ class HomePage extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LocationApp()));
+                MaterialPageRoute(builder: (context) => const LocationApp()));
           },
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
             Icon(
               Icons.location_on,
               color: Colors.blue,
@@ -70,7 +73,7 @@ class HomePage extends StatelessWidget {
 class Item extends StatelessWidget {
   String name;
   Image image;
-  Item({required this.name, required this.image});
+  Item({super.key, required this.name, required this.image});
 
   @override
   Widget build(BuildContext context) {

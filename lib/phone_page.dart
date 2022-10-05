@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class PhonePage extends StatelessWidget {
@@ -79,7 +81,8 @@ class Product extends StatelessWidget {
   String priceReal;
 
   Product(
-      {required this.image,
+      {super.key,
+      required this.image,
       required this.name,
       required this.screen,
       required this.memory,
