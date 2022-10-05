@@ -154,7 +154,7 @@ class _LocationAppState extends State<LocationApp> {
                       context: context,
                       builder: (context) => AlertDialog(
                             title: Text(
-                                '${distance == null ? '0' : distance.toStringAsFixed(2)} km '),
+                                'Khoảng cách giữa hai điểm : ${distance == null ? '0' : distance.toStringAsFixed(2)} km '),
                           ));
                 },
                 child: const Text('Khoảng cách'))
