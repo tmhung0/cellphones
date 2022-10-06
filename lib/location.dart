@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, unused_local_variable, non_constant_identifier_names
+// ignore_for_file: prefer_typing_uninitialized_variables, unused_local_variable, non_constant_identifier_names, await_only_futures
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -11,12 +11,18 @@ class LocationApp extends StatefulWidget {
 }
 
 class _LocationAppState extends State<LocationApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCurrentLocation();
+  }
+
   String locationMessage = "";
   var distance;
   var latitudeCurrent;
   var longitudeCurrent;
   var valueChoose;
-  var valueList;
   var latitude;
   var longitude;
   List<dynamic> listAddress = [
@@ -88,25 +94,11 @@ class _LocationAppState extends State<LocationApp> {
               onChanged: (newValue) {
                 setState(() {
                   valueChoose = newValue as String?;
-                  switch (valueChoose) {
-                    case 'P. Tô Hiệu, Nghĩa Tân,Cầu Giấy, Hà Nội':
-                      latitude = listAddress[0]['lat'];
-                      longitude = listAddress[0]['lng'];
-                      break;
-                    case 'Showa Memorial Park':
-                      latitude = listAddress[1]['lat'];
-                      longitude = listAddress[1]['lng'];
-                      break;
-                    case 'Yokohama Museum of Art':
-                      latitude = listAddress[2]['lat'];
-                      longitude = listAddress[2]['lng'];
-                      break;
-                    case 'Yokohama Park':
-                      latitude = listAddress[3]['lat'];
-                      longitude = listAddress[3]['lng'];
-                      break;
-                    default:
-                  }
+                  var address = listAddress
+                      .where((address) => valueChoose == address['name'])
+                      .first;
+                  latitude = address['lat'];
+                  longitude = address['lng'];
                 });
               },
               items: listAddress.map((newValue) {
@@ -127,23 +119,6 @@ class _LocationAppState extends State<LocationApp> {
             const SizedBox(
               height: 20,
             ),
-            const Text("Vị trí địa lý hiện tại",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(locationMessage),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  getCurrentLocation();
-                },
-                child: const Text(
-                  'Lấy vị trí hiên tại',
-                  style: TextStyle(color: Colors.white),
-                )),
             const SizedBox(
               height: 20,
             ),
